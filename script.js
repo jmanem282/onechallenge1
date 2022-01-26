@@ -24,17 +24,14 @@ let txtDestino = document.querySelector("#msg");
 let btnEncriptar = document.querySelector("#btn-encriptar");
 let btnDesencriptar = document.querySelector("#btn-desencriptar");
 let btnCopiar = document.querySelector("#btn-copiar");
-
+const patron = /^[a-z\s\ñ]+$/;
 
 
 function encriptar(){
     let msg = txtOrigen.value;
     let msgenc = "";
-    msg = msg.trim()
-    if(msg==""){
-        alert("Por favor escriba un mensaje");
-    }
-    else{
+    msg = msg.toLowerCase().trim();
+    if(validarMsg(msg)){
         for(i=0;i<msg.length;i++){
             switch(msg[i]){
                 case 'a':
@@ -63,11 +60,8 @@ function encriptar(){
 function desencriptar(){
     let msg = txtOrigen.value;
     let msgdesenc = "";
-    msg = msg.trim()
-    if(msg==""){
-        alert("Por favor escriba un mensaje");
-    }
-    else{
+    msg = msg.toLowerCase().trim();
+    if(validarMsg(msg)){
         for(i=0;i<msg.length;i++){
             switch(msg[i]){
                 case 'a':
@@ -112,6 +106,20 @@ function copiar(){
     }
 }
 
+function validarMsg(msg){
+    if(msg == ""){
+        alert("Mensaje vacío");
+        return false;
+    }
+    else if(patron.test(msg)){
+        return true;
+    }
+    else{
+        alert("Sólo se permiten letras sin acentos");
+        return false;
+    }
+    
+}
 
 btnEncriptar.onclick = encriptar;
 btnDesencriptar.onclick = desencriptar;
