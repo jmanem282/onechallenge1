@@ -59,36 +59,10 @@ function encriptar(){
 
 function desencriptar(){
     let msg = txtOrigen.value;
-    let msgdesenc = "";
     msg = msg.toLowerCase().trim();
     if(validarMsg(msg)){
-        for(i=0;i<msg.length;i++){
-            switch(msg[i]){
-                case 'a':
-                    msgdesenc = msgdesenc + "a";
-                    i++;
-                    break;
-                case 'e':
-                    msgdesenc = msgdesenc + "e";
-                    i = i+4;
-                    break;
-                case 'i':
-                    msgdesenc = msgdesenc + "i";
-                    i = i+3;
-                    break;
-                case 'o':
-                    msgdesenc = msgdesenc + "o";
-                    i = i+3;
-                    break;
-                case 'u':
-                    msgdesenc = msgdesenc + "u";
-                    i = i+3;
-                    break;
-                default:
-                    msgdesenc = msgdesenc + msg[i];
-            }
-        }
-        txtDestino.value = msgdesenc;
+        msg = msg.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+        txtDestino.value = msg;
     }
 }
 
