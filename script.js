@@ -89,7 +89,7 @@ function validarMsg(msg){
         return true;
     }
     else{
-        alert("Sólo se permiten letras sin acentos");
+        alert("Sólo se permiten letras, sin acentos");
         return false;
     }
     
